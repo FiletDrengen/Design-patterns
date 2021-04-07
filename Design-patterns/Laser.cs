@@ -42,6 +42,7 @@ namespace Design_patterns
             if (other is Player)
             {
                 velocity *= -1;
+                Player.hp--;
             }
         }
     }

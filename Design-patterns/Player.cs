@@ -9,7 +9,7 @@ namespace Design_patterns
     {
         public static Vector2 PlayerPosition = new Vector2(960, 520);
 
-        private int hp = 1;
+        public static int hp = 3;
 
         public Player()
         {
