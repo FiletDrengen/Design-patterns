@@ -8,7 +8,7 @@ namespace Design_patterns
 {
     internal class Collider
     {
-        public bool CheckCollisionEvents { get; set; };
+        public bool CheckCollisionEvents { get; set; }
         private Vector2 size;
         private Vector2 origin;
         private Texture2D texture;
