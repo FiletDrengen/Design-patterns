@@ -93,6 +93,11 @@ namespace Design_patterns
                 go.Draw(spriteBatch);
             }
             spriteBatch.Draw(sprite, spritePosition, null, Color.White, rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Platform, new Rectangle(650, 350, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Platform, new Rectangle(1250, 350, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Platform, new Rectangle(650, 750, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+            spriteBatch.Draw(Platform, new Rectangle(1250, 750, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+
             // TODO: Add your drawing code here
             spriteBatch.End();
             base.Draw(gameTime);

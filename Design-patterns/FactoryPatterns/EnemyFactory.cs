@@ -28,17 +28,14 @@ namespace Design_patterns
             {
                 case "Blue":
                     enemy.SetSprite("enemyBlue1");
-                    go.AddComponent(new Enemy());
                     break;
 
+                case "Black":
                     enemy.SetSprite("BlackEnemy");
-                    go.AddComponent(new Enemy());
-                    go.AddComponent(new Enemy());
                     break;
+
+                case "Mr.Unknown":
                     enemy.SetSprite("Mr.Unknown");
-                    go.AddComponent(new Enemy());
-                    sr.SetSprite("Mr.Unknown");
-                    go.AddComponent(new Enemy());
                     break;
             }
 
