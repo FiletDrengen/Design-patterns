@@ -9,6 +9,7 @@ namespace Design_patterns
     public class PlayerTower
     {
         private static PlayerTower instance;
+        private GameObject go = new GameObject();
 
         public static PlayerTower Instance
         {
