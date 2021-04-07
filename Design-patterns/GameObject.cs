@@ -13,7 +13,7 @@ namespace Design_patterns
         private Dictionary<string, Component> components = new Dictionary<string, Component>();
         public static Vector2 Position { get; set; }
         public Texture2D Sprite { get; set; }
-        public Vector2 Origin { get; set; }
+        public Vector2 Origin { get; set; } 
 
         public void AddComponent(Component component)
         {
