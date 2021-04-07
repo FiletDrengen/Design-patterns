@@ -64,7 +64,7 @@ namespace Design_patterns
 
             // TODO: use this.Content to load your game content here
 
-            sprite = Content.Load<Texture2D>("shield");
+            sprite = Content.Load<Texture2D>("shield1");
             spritePosition = new Vector2(300, 200);
 
         }
