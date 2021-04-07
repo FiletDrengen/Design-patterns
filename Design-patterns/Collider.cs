@@ -32,7 +32,7 @@ namespace Design_patterns
         {
             this.origin = spriteRenderer.Origin;
             this.size = new Vector2(spriteRenderer.Sprite.Width, spriteRenderer.Sprite.Height);
-            //texture = GameWorld.Instance.Content.Load<Texture2D>("");
+            texture = GameWorld.Instance.Content.Load<Texture2D>("Pixel");
         }
 
         public void OnCollisionEnter(Collider other)
@@ -49,7 +49,7 @@ namespace Design_patterns
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, Collisionbox, null, Color.Red, 0, origin, SpriteEffects.None, 0);
         }

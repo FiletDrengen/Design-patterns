@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Design-patterns
+namespace Design_patterns
 {
-    class Factory
-{
-}
+    internal class Factory
+    {
+    }
 }
