@@ -55,11 +55,10 @@ namespace Design_patterns
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
             Background = Content.Load<Texture2D>("Background");
             sprite = Content.Load<Texture2D>("shield");
             spritePosition = new Vector2(960, 520);
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -69,16 +68,16 @@ namespace Design_patterns
 
             // TODO: Add your update logic here
 
-            //taking the location of the mouse
-            MouseState mouse = Mouse.GetState();
+            KeyboardState keystate = Keyboard.GetState();
+            if (keystate.IsKeyDown(Keys.Left))
+            {
+                rotation-= 0.1f;
+            }
+            else if (keystate.IsKeyDown(Keys.Right))
+            {
+                rotation += 0.1f;
+            }
 
-            //using the location of the mouse to rotate the sprite
-            distance.X = mouse.X - spritePosition.X;
-            distance.Y = mouse.Y - spritePosition.Y;
-
-            rotation = (float)Math.Atan2(distance.Y, distance.X);
-
-            MouseState mouseState = Mouse.GetState();
 
             base.Update(gameTime);
         }
