@@ -56,7 +56,7 @@ namespace Design_patterns
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Background = Content.Load<Texture2D>("Background");
-            sprite = Content.Load<Texture2D>("shield");
+            sprite = Content.Load<Texture2D>("shield1");
             spritePosition = new Vector2(960, 520);
 
         }
