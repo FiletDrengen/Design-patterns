@@ -15,13 +15,15 @@ namespace Design_patterns
         private List<GameObject> gameobject = new List<GameObject>();
         public Vector2 spritePosition;
         private float rotation;
-
+        private Texture2D Background;
 
         public GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
         }
 
         private static GameWorld instance;
@@ -43,16 +45,8 @@ namespace Design_patterns
         {
             // TODO: Add your initialization logic here
 
-            GameObject go = new GameObject();
-
-            GameWorld GW = Instance;
-
             gameobject.Add(EnemyFactory.Instance.Create("Blue"));
-
-            foreach (GameObject goList in gameobject)
-            {
-                goList.Awake();
-            }
+            gameobject.Add(PlayerTower.Instance.CreatePlayer());
 
             base.Initialize();
         }
@@ -60,11 +54,9 @@ namespace Design_patterns
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
-
+            Background = Content.Load<Texture2D>("Background");
             sprite = Content.Load<Texture2D>("shield1");
-            spritePosition = new Vector2(300, 200);
+            spritePosition = new Vector2(960, 520);
 
         }
 
@@ -93,12 +85,12 @@ namespace Design_patterns
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            spriteBatch.Draw(Background, new Rectangle(0, 0, 1920, 1080), Color.White);
             foreach (GameObject go in gameobject)
             {
                 go.Draw(spriteBatch);
             }
             spriteBatch.Draw(sprite, spritePosition, null, Color.White, rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-
             // TODO: Add your drawing code here
             spriteBatch.End();
             base.Draw(gameTime);

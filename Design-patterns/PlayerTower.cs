@@ -6,28 +6,27 @@ using System.Text;
 
 namespace Design_patterns
 {
-    public class PlayerTower : Component
+    public class PlayerTower
     {
-        private Texture2D Sprite;
-        private Vector2 Position;
-        private int Health;
+        private static PlayerTower instance;
 
-        public PlayerTower(Vector2 Position)
+        public static PlayerTower Instance
         {
-            this.Position = Position;
-            Sprite = GameWorld.Instance.Content.Load<Texture2D>("PlayerTower");
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            if (Health <= 0)
+            get
             {
-                //GameOver
+                if (instance == null)
+                {
+                    instance = new PlayerTower();
+                }
+                return instance;
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public GameObject CreatePlayer()
         {
+            Player player = new Player();
+            player.SetSprite("PlayerTower");
+            return player;
         }
     }
 }

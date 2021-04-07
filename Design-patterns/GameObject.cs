@@ -1,48 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace Design_patterns
 {
     public class GameObject
     {
-        private Dictionary<string, Component> components = new Dictionary<string, Component>();
-        public static Vector2 Position { get; set; }
-        public Texture2D Sprite { get; set; }
-        public Vector2 Origin { get; set; } 
+        protected Texture2D sprite;
+        public Vector2 position;
+        protected Color color;
+        protected Vector2 origin;
+        protected Vector2 scale;
+        protected float rotation;
+        protected int offsetX;
+        protected int offsetY;
 
-        public void AddComponent(Component component)
+        public GameObject()
         {
-            components.Add(component.ToString(), component);
-            component.GameObject = this;
+            color = Color.White;
+            scale = new Vector2(1, 1);
         }
 
-        public void Update(GameTime gameTime)
+        public void SetSprite(string spriteName)
         {
-            foreach (Component component in components.Values)
+            sprite = GameWorld.Instance.Content.Load<Texture2D>(spriteName);
+        }
+
+        public virtual Rectangle Collision
+        {
+            get
             {
-                component.Update(gameTime);
+                return new Rectangle(
+                       (int)position.X + offsetX,
+                       (int)position.Y,
+                       (int)sprite.Width,
+                       (int)sprite.Height + offsetY
+                   );
             }
         }
 
-        public void Awake()
+        public virtual void Update(GameTime gameTime)
         {
-            foreach (Component component in components.Values)
+        }
+
+        public virtual void OnCollision(GameObject other)
+        {
+        }
+
+        public void CheckCollision(GameObject other)
+        {
+            if (Collision.Intersects(other.Collision))
             {
-                component.Awake();
+                OnCollision(other);
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Component component in components.Values)
-            {
-                component.Draw(spriteBatch);
-            }
+            spriteBatch.Draw(sprite, position, null, color, 0f, Vector2.Zero, scale, SpriteEffects.None, 1);
         }
     }
 }
