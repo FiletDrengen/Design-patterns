@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Design_patterns
 {
-    public class EnemyFactory
+     class EnemyFactory : Factory
     {
         private static EnemyFactory instance;
 
@@ -20,7 +20,7 @@ namespace Design_patterns
             }
         }
 
-        public GameObject Create(string type)
+        public override GameObject Create(string type)
         {
             GameObject go = new GameObject();
             SpriteRenderer sr = new SpriteRenderer();
