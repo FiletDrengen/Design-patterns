@@ -14,6 +14,8 @@ namespace Design_patterns
         private Texture2D sprite;
         public List<GameObject> gameobject = new List<GameObject>();
         private Vector2 distance;
+        private Texture2D Platform;
+
         public Vector2 spritePosition;
         private float rotation;
         private Texture2D Background;
@@ -48,7 +50,7 @@ namespace Design_patterns
             // TODO: Add your initialization logic here
             gameobject.Add(EnemyFactory.Instance.Create("Blue"));
             gameobject.Add(PlayerTower.Instance.CreatePlayer());
-
+            gameobject.Add(PlatformPlayer.Instance.CreatePlatformPlayer());
             base.Initialize();
         }
 
@@ -58,6 +60,7 @@ namespace Design_patterns
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Background = Content.Load<Texture2D>("Background");
             sprite = Content.Load<Texture2D>("shield1");
+            Platform = Content.Load<Texture2D>("platform");
             spritePosition = new Vector2(960, 520);
         }
 
