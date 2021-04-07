@@ -13,7 +13,6 @@ namespace Design_patterns
         public SpriteBatch spriteBatch;
         private Texture2D sprite;
         private List<GameObject> gameobject = new List<GameObject>();
-        private Vector2 distance;
         public Vector2 spritePosition;
         private float rotation;
 

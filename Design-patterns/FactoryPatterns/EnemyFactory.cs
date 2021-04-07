@@ -30,19 +30,16 @@ namespace Design_patterns
             {
                 case "Blue":
                     sr.SetSprite("enemyBlue1");
-                    go.AddComponent(new Collider(sr));
                     go.AddComponent(new Enemy());
                     break;
 
                 case "Black":
                     sr.SetSprite("BlackEnemy");
-                    go.AddComponent(new Collider(sr));
                     go.AddComponent(new Enemy());
                     break;
 
                 default:
                     sr.SetSprite("Mr.Unknown");
-                    go.AddComponent(new Collider(sr));
                     go.AddComponent(new Enemy());
                     break;
             }
