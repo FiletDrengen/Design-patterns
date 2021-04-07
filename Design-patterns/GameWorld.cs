@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Design_patterns
@@ -10,7 +11,12 @@ namespace Design_patterns
         public GraphicsDeviceManager graphics;
 
         public SpriteBatch spriteBatch;
+        private Texture2D sprite;
         private List<GameObject> gameobject = new List<GameObject>();
+        private Vector2 distance;
+        public Vector2 spritePosition;
+        private float rotation;
+
 
         public GameWorld()
         {
@@ -59,6 +65,7 @@ namespace Design_patterns
             // TODO: use this.Content to load your game content here
 
             sprite = Content.Load<Texture2D>("shield");
+            spritePosition = new Vector2(200, 200);
 
         }
 
@@ -91,6 +98,8 @@ namespace Design_patterns
             {
                 go.Draw(spriteBatch);
             }
+            spriteBatch.Draw(sprite, spritePosition, null, Color.White, rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+
             // TODO: Add your drawing code here
             spriteBatch.End();
             base.Draw(gameTime);
