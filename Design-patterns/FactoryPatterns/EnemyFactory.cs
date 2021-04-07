@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Design_patterns
 {
@@ -39,6 +40,11 @@ namespace Design_patterns
                     break;
             }
 
+            enemy.origin = new Vector2(enemy.sprite.Width / 2, enemy.sprite.Height / 2);
+
+            Vector2 Distance = Player.PlayerPosition - enemy.position;
+
+            enemy.rotation = (float)(Math.Atan2(Distance.Y, Distance.X) - Math.PI / 2);
             return enemy;
         }
     }

@@ -9,17 +9,18 @@ namespace Design_patterns
 {
     public class GameObject
     {
-        protected Texture2D sprite;
+        public Texture2D sprite;
         public Vector2 position;
         protected Color color;
-        protected Vector2 origin;
+        public Vector2 origin;
         protected Vector2 scale;
-        protected float rotation;
+        public float rotation;
         protected int offsetX;
         protected int offsetY;
 
         public GameObject()
         {
+            rotation = 0;
             color = Color.White;
             scale = new Vector2(1, 1);
         }
@@ -52,15 +53,15 @@ namespace Design_patterns
 
         public void CheckCollision(GameObject other)
         {
-            if (Collision.Intersects(other.Collision))
+            if (Collision.Intersects(other.Collision) && this != other)
             {
                 OnCollision(other);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, position, null, color, 0f, Vector2.Zero, scale, SpriteEffects.None, 1);
+            spriteBatch.Draw(sprite, position, null, color, rotation, Vector2.Zero, scale, SpriteEffects.None, 1);
         }
     }
 }

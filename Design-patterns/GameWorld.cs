@@ -12,11 +12,12 @@ namespace Design_patterns
 
         public SpriteBatch spriteBatch;
         private Texture2D sprite;
-        private List<GameObject> gameobject = new List<GameObject>();
+        public List<GameObject> gameobject = new List<GameObject>();
         private Vector2 distance;
         public Vector2 spritePosition;
         private float rotation;
         private Texture2D Background;
+        private Texture2D collisionTexture;
 
         public GameWorld()
         {
@@ -45,7 +46,6 @@ namespace Design_patterns
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             gameobject.Add(EnemyFactory.Instance.Create("Blue"));
             gameobject.Add(PlayerTower.Instance.CreatePlayer());
 
@@ -54,11 +54,25 @@ namespace Design_patterns
 
         protected override void LoadContent()
         {
+            collisionTexture = Content.Load<Texture2D>("Pixel");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Background = Content.Load<Texture2D>("Background");
-            sprite = Content.Load<Texture2D>("shield");
+            sprite = Content.Load<Texture2D>("shield1");
             spritePosition = new Vector2(960, 520);
+        }
 
+        public void DrawCollisionBox(GameObject go)
+        {
+            //Der laves en streg med tykkelsen 1 for hver side af Collision.
+            Rectangle topLine = new Rectangle(go.Collision.X, go.Collision.Y, go.Collision.Width, 1);
+            Rectangle bottomLine = new Rectangle(go.Collision.X, go.Collision.Y + go.Collision.Height, go.Collision.Width, 1);
+            Rectangle rightLine = new Rectangle(go.Collision.X + go.Collision.Width, go.Collision.Y, 1, go.Collision.Height);
+            Rectangle leftLine = new Rectangle(go.Collision.X, go.Collision.Y, 1, go.Collision.Height);
+            //Der tegnes en streg med tykkelsen 1 for hver side af Collision med collsionTexture med farven rød.
+            spriteBatch.Draw(collisionTexture, topLine, Color.Red);
+            spriteBatch.Draw(collisionTexture, bottomLine, Color.Red);
+            spriteBatch.Draw(collisionTexture, rightLine, Color.Red);
+            spriteBatch.Draw(collisionTexture, leftLine, Color.Red);
         }
 
         protected override void Update(GameTime gameTime)
@@ -71,13 +85,21 @@ namespace Design_patterns
             KeyboardState keystate = Keyboard.GetState();
             if (keystate.IsKeyDown(Keys.Left))
             {
-                rotation-= 0.1f;
+                rotation -= 0.1f;
             }
             else if (keystate.IsKeyDown(Keys.Right))
             {
                 rotation += 0.1f;
             }
 
+            foreach (GameObject gameob in gameobject)
+            {
+                gameob.Update(gameTime);
+                foreach (GameObject item in gameobject)
+                {
+                    gameob.CheckCollision(item);
+                }
+            }
 
             base.Update(gameTime);
         }
@@ -87,6 +109,12 @@ namespace Design_patterns
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(Background, new Rectangle(0, 0, 1920, 1080), Color.White);
+            foreach (GameObject go in gameobject)
+            {
+                DrawCollisionBox(go);
+                go.Draw(spriteBatch);
+            }
+
             foreach (GameObject go in gameobject)
             {
                 go.Draw(spriteBatch);
