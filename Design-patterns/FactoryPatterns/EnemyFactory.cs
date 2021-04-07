@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Design_patterns
 {
-    internal class EnemyFactory
+     class EnemyFactory : Factory
     {
         private static EnemyFactory instance;
 
@@ -16,30 +16,33 @@ namespace Design_patterns
                 {
                     instance = new EnemyFactory();
                 }
-
                 return instance;
             }
         }
 
-        public GameObject Create(string type)
+        public override GameObject Create(string type)
         {
             GameObject go = new GameObject();
             SpriteRenderer sr = new SpriteRenderer();
+            go.AddComponent(sr);
 
             switch (type)
             {
                 case "Blue":
-                    sr.SetSprite("BlueEnemy");
+                    sr.SetSprite("enemyBlue1");
+                    go.AddComponent(new Collider(sr));
                     go.AddComponent(new Enemy());
                     break;
 
                 case "Black":
                     sr.SetSprite("BlackEnemy");
+                    go.AddComponent(new Collider(sr));
                     go.AddComponent(new Enemy());
                     break;
 
                 default:
                     sr.SetSprite("Mr.Unknown");
+                    go.AddComponent(new Collider(sr));
                     go.AddComponent(new Enemy());
                     break;
             }

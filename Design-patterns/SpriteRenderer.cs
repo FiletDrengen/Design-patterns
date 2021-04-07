@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Design_patterns
 {
-    internal class SpriteRenderer
+    public class SpriteRenderer : Component
     {
         public Texture2D Sprite { get; set; }
 
@@ -26,7 +26,7 @@ namespace Design_patterns
             Sprite = GameWorld.Instance.Content.Load<Texture2D>(spriteName);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Sprite, GameObject.Position, null, Color.White, 0, Origin, 1, SpriteEffects.None, 0);
         }

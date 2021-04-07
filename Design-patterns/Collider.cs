@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Design_patterns
 {
-    internal class Collider
+    public class Collider : Component
     {
         public bool CheckCollisionEvents { get; set; }
         private Vector2 size;
@@ -32,7 +32,7 @@ namespace Design_patterns
         {
             this.origin = spriteRenderer.Origin;
             this.size = new Vector2(spriteRenderer.Sprite.Width, spriteRenderer.Sprite.Height);
-            texture = GameWorld.Instance.Content.Load<Texture2D>("CollisionBox");
+            texture = GameWorld.Instance.Content.Load<Texture2D>("Pixel");
         }
 
         public void OnCollisionEnter(Collider other)
@@ -49,7 +49,7 @@ namespace Design_patterns
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, Collisionbox, null, Color.Red, 0, origin, SpriteEffects.None, 0);
         }

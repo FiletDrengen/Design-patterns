@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Design_patterns
 {
-    internal class Enemy : GameObject
+    public class Enemy : Component
     {
         private Vector2 VenstreØversteHjørne = new Vector2(0, 0);
         private Vector2 HøjreØversteHjørne = new Vector2(1980, 0);
@@ -37,27 +37,27 @@ namespace Design_patterns
                 switch (RandomNumber(0, 3))
                 {
                     case 0:
-                        Position = VenstreNedersteHjørne;
+                        GameObject.Position = VenstreNedersteHjørne;
                         hp += 1;
                         break;
 
                     case 1:
-                        Position = HøjreØversteHjørne;
+                        GameObject.Position = HøjreØversteHjørne;
                         hp += 1;
                         break;
 
                     case 2:
-                        Position = VenstreØversteHjørne;
+                        GameObject.Position = VenstreØversteHjørne;
                         hp += 1;
                         break;
 
                     case 3:
-                        Position = HøjreNedersteHjørne;
+                        GameObject.Position = HøjreNedersteHjørne;
                         hp += 1;
                         break;
 
                     default:
-                        Position = HøjreNedersteHjørne;
+                        GameObject.Position = HøjreNedersteHjørne;
                         hp += 1;
                         break;
                 }
