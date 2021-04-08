@@ -26,10 +26,7 @@ namespace Design_patterns
 
         public override void OnCollision(GameObject other)
         {
-            if (other is Laser)
-            {
-                hp -= 1;
-            }
+            
         }
     }
 }

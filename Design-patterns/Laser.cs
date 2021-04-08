@@ -42,6 +42,7 @@ namespace Design_patterns
             if (other is Base)
             {
                 Base.hp--;
+                Enemy.deadlaser.Add(this);
             }
             else if (other is Shield)
             {

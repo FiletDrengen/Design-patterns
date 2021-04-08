@@ -17,6 +17,8 @@ namespace Design_patterns
         protected int offsetX;
         protected int offsetY;
         protected float rotation;
+        protected int sizeX;
+        protected int sizeY;
 
         public GameObject()
         {
@@ -36,9 +38,9 @@ namespace Design_patterns
             {
                 return new Rectangle(
                        (int)position.X + offsetX,
-                       (int)position.Y,
-                       (int)sprite.Width,
-                       (int)sprite.Height + offsetY
+                       (int)position.Y + offsetY,
+                       (int)sprite.Width + sizeX,
+                       (int)sprite.Height + sizeY
                    );
             }
         }

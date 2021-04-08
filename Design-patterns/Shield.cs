@@ -13,7 +13,7 @@ namespace Design_patterns
         private GameObject go = new GameObject();
 
         private float speed;
-
+        
 
         private Shield()
         {
@@ -43,7 +43,8 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
-           
+            position += shieldPosition * rotation * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
         }
 
         public override void OnCollision(GameObject other)
@@ -55,7 +56,13 @@ namespace Design_patterns
         {
             Shield shield = Shield.Instance;
             shield.SetSprite("shield1");
+            shield.offsetX = 110;
+            shield.offsetY = 110;
+            shield.sizeX = -100;
+            shield.sizeY = -100;
             return shield;
         }
+
+
     }
 }

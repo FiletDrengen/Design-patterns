@@ -17,12 +17,13 @@ namespace Design_patterns
         public static Vector2 CurrentPosition = new Vector2(200, 200);
         private int hp = 1;
         public List<Laser> bullets = new List<Laser>();
+        public static List<Laser> deadlaser = new List<Laser>();
+
 
         public Texture2D bulletTexture;
         public Vector2 EnemyPosition;
         private int Cooldown = 5;
         private float Time;
-        private float rotation;
 
         public Vector2 Position
         {
@@ -40,9 +41,10 @@ namespace Design_patterns
         public void ATTACK()
         {
             Laser laser = new Laser(this);
-            laser.Position = position + new Vector2(this.sprite.Width / 2, this.sprite.Height / 2);
+            laser.Position = position + new Vector2(this.sprite.Width/2, this.sprite.Height/2);
             laser.SetSprite("Laser");
             bullets.Add(laser);
+            
         }
 
         private readonly Random random = new Random();
@@ -57,9 +59,12 @@ namespace Design_patterns
             Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (Cooldown < Time)
             {
-                hp -= 1;
                 ATTACK();
-                Time = 0;
+                Time = 1;
+            }
+            foreach (Laser L in deadlaser)
+            {
+                bullets.Remove(L);
             }
 
             Move();
@@ -70,6 +75,7 @@ namespace Design_patterns
                 foreach (GameObject item in GameWorld.Instance.gameobjects)
                 {
                     laser.CheckCollision(item);
+                    item.CheckCollision(laser);
                 }
             }
         }
@@ -88,7 +94,7 @@ namespace Design_patterns
         {
             if (hp != 1)
             {
-                switch (RandomNumber(0, 3))
+                switch (RandomNumber(0, 4))
                 {
                     case 0:
                         position = VenstreNedersteHjørne;
@@ -110,6 +116,11 @@ namespace Design_patterns
                         hp += 1;
                         break;
 
+                    case 4:
+                        position = HøjreNedersteHjørne;
+                        hp += 1;
+                        break;
+
                     default:
                         position = HøjreNedersteHjørne;
                         hp += 1;
@@ -125,7 +136,11 @@ namespace Design_patterns
         {
             if (other is Laser)
             {
-                hp -= 1;
+                if (Cooldown < Time)
+                {
+                    hp -= 1;
+                }
+                
             }
         }
     }
