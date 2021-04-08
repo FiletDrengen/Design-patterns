@@ -13,7 +13,8 @@ namespace Design_patterns
 
         public SpriteBatch spriteBatch;
         private Texture2D sprite;
-        public List<GameObject> gameobject = new List<GameObject>();
+        public List<GameObject> gameobjects = new List<GameObject>();
+        
         private Texture2D Platform;
         private SpriteFont font;
 
@@ -34,6 +35,8 @@ namespace Design_patterns
             graphics.PreferredBackBufferHeight = 1080;
         }
 
+      
+
         private static GameWorld instance;
 
         public static GameWorld Instance
@@ -53,10 +56,10 @@ namespace Design_patterns
         {
             // TODO: Add your initialization logic here
             inputHandler = new InputHandler();
-            gameobject.Add(EnemyFactory.Instance.Create("Blue"));
-            gameobject.Add(BaseTower.Instance.CreatePlayer());
-            gameobject.Add(PlatformBase.Instance.CreatePlatformPlayer());
-            gameobject.Add(Shield.Instance.CreateShield());
+            gameobjects.Add(EnemyFactory.Instance.Create("Blue"));
+            gameobjects.Add(BaseTower.Instance.CreatePlayer());
+            gameobjects.Add(PlatformBase.Instance.CreatePlatformPlayer());
+            gameobjects.Add(Shield.Instance.CreateShield());
             base.Initialize();
         }
 
@@ -101,10 +104,10 @@ namespace Design_patterns
                 rotation += 0.1f;
             }
 
-            foreach (GameObject gameob in gameobject)
+            foreach (GameObject gameob in gameobjects)
             {
                 gameob.Update(gameTime);
-                foreach (GameObject item in gameobject)
+                foreach (GameObject item in gameobjects)
                 {
                     gameob.CheckCollision(item);
                 }
@@ -119,13 +122,13 @@ namespace Design_patterns
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(Background, new Rectangle(0, 0, 1920, 1080), Color.White);
-            foreach (GameObject go in gameobject)
+            foreach (GameObject go in gameobjects)
             {
                 DrawCollisionBox(go);
                 go.Draw(spriteBatch);
             }
 
-            foreach (GameObject go in gameobject)
+            foreach (GameObject go in gameobjects)
             {
                 go.Draw(spriteBatch);
             }
@@ -139,5 +142,12 @@ namespace Design_patterns
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
+         
+        public void RemoveGameObject(GameObject go)
+        {
+           gameobjects.Remove(go);
+        }
+
     }
 }
