@@ -22,6 +22,7 @@ namespace Design_patterns
         public Vector2 EnemyPosition;
         private int Cooldown = 5;
         private float Time;
+        private float rotation;
 
         public Vector2 Position
         {

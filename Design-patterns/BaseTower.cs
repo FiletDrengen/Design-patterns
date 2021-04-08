@@ -6,18 +6,18 @@ using System.Text;
 
 namespace Design_patterns
 {
-    public class PlayerTower
+    public class BaseTower
     {
-        private static PlayerTower instance;
+        private static BaseTower instance;
         private GameObject go = new GameObject();
 
-        public static PlayerTower Instance
+        public static BaseTower Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new PlayerTower();
+                    instance = new BaseTower();
                 }
                 return instance;
             }
@@ -25,9 +25,9 @@ namespace Design_patterns
 
         public GameObject CreatePlayer()
         {
-            Base player = new Base();
-            player.SetSprite("PlayerTower");
-            return player;
+            Base baseTower = new Base();
+            baseTower.SetSprite("PlayerTower");
+            return baseTower;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Design_patterns.CommandPattern;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -13,13 +14,16 @@ namespace Design_patterns
         public SpriteBatch spriteBatch;
         private Texture2D sprite;
         public List<GameObject> gameobject = new List<GameObject>();
-        private Vector2 distance;
         private Texture2D Platform;
         private SpriteFont font;
 
-        private float rotation;
+        public float rotation;
         private Texture2D Background;
         private Texture2D collisionTexture;
+
+        private InputHandler inputHandler;
+
+        public static float DeltaTime { get; set; }
 
         public GameWorld()
         {
@@ -48,9 +52,11 @@ namespace Design_patterns
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            inputHandler = new InputHandler();
             gameobject.Add(EnemyFactory.Instance.Create("Blue"));
-            gameobject.Add(PlayerTower.Instance.CreatePlayer());
+            gameobject.Add(BaseTower.Instance.CreatePlayer());
             gameobject.Add(PlatformBase.Instance.CreatePlatformPlayer());
+            gameobject.Add(Shield.Instance.CreateShield());
             base.Initialize();
         }
 
@@ -82,6 +88,7 @@ namespace Design_patterns
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+
             // TODO: Add your update logic here
 
             KeyboardState keystate = Keyboard.GetState();
@@ -103,6 +110,7 @@ namespace Design_patterns
                 }
             }
 
+            DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
         }
 

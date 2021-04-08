@@ -8,7 +8,7 @@ namespace Design_patterns
     internal class EnemyFactory : Factory
     {
         private static EnemyFactory instance;
-
+        private float rotation;
         public static EnemyFactory Instance
         {
             get
@@ -44,7 +44,7 @@ namespace Design_patterns
 
             Vector2 Distance = Base.PlayerPosition - enemy.position;
 
-            enemy.rotation = (float)(Math.Atan2(Distance.Y, Distance.X) - Math.PI / 2);
+            rotation = (float)(Math.Atan2(Distance.Y, Distance.X) - Math.PI / 2);
             return enemy;
         }
     }
