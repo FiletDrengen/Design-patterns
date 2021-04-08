@@ -66,7 +66,7 @@ namespace Design_patterns
             foreach (Laser laser in bullets)
             {
                 laser.Update(gameTime);
-                foreach (GameObject item in GameWorld.Instance.gameobject)
+                foreach (GameObject item in GameWorld.Instance.gameobjects)
                 {
                     laser.CheckCollision(item);
                 }

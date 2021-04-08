@@ -23,6 +23,8 @@ namespace Design_patterns
 
         public override GameObject Create(string type)
         {
+            
+
             Enemy enemy = new Enemy();
 
             switch (type)
