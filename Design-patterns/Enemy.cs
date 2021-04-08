@@ -11,8 +11,8 @@ namespace Design_patterns
     {
         private Vector2 VenstreØversteHjørne = new Vector2(200, 200);
         private Vector2 HøjreØversteHjørne = new Vector2(1780, 200);
-        private Vector2 VenstreNedersteHjørne = new Vector2(200, 880);
-        private Vector2 HøjreNedersteHjørne = new Vector2(1780, 880);
+        private Vector2 VenstreNedersteHjørne = new Vector2(200, 800);
+        private Vector2 HøjreNedersteHjørne = new Vector2(1780, 800);
 
         public static Vector2 CurrentPosition = new Vector2(200, 200);
         private int hp = 1;
@@ -67,7 +67,7 @@ namespace Design_patterns
             foreach (Laser laser in bullets)
             {
                 laser.Update(gameTime);
-                foreach (GameObject item in GameWorld.Instance.gameobject)
+                foreach (GameObject item in GameWorld.Instance.gameobjects)
                 {
                     laser.CheckCollision(item);
                 }
