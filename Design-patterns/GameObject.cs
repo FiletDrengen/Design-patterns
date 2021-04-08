@@ -14,9 +14,9 @@ namespace Design_patterns
         protected Color color;
         public Vector2 origin;
         protected Vector2 scale;
-        public float rotation;
         protected int offsetX;
         protected int offsetY;
+        public float rotation;
 
         public GameObject()
         {
@@ -45,6 +45,7 @@ namespace Design_patterns
 
         public virtual void Update(GameTime gameTime)
         {
+            
         }
 
         public virtual void OnCollision(GameObject other)
@@ -61,7 +62,7 @@ namespace Design_patterns
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, position, null, color, rotation, Vector2.Zero, scale, SpriteEffects.None, 1);
+               spriteBatch.Draw(sprite, position, null, color, rotation, Vector2.Zero, scale, SpriteEffects.None, 1);
         }
     }
 }

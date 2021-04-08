@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,9 +12,18 @@ namespace Design_patterns
 
         private GameObject go = new GameObject();
 
+        private float speed;
+
+
         public Shield()
         {
             position = shieldPosition;
+        }
+
+        public void Rotate(float rotation)
+        {
+            rotation *= speed;
+
         }
 
         private static Shield instance;
@@ -32,7 +42,15 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
-            
+            KeyboardState keystate = Keyboard.GetState();
+            if (keystate.IsKeyDown(Keys.Left))
+            {
+                rotation -= 0.1f;
+            }
+            else if (keystate.IsKeyDown(Keys.Right))
+            {
+                rotation += 0.1f;
+            }
         }
 
         public override void OnCollision(GameObject other)

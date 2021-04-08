@@ -41,8 +41,11 @@ namespace Design_patterns
         {
             if (other is Base)
             {
-                
                 Base.hp--;
+            }
+            else if (other is Shield)
+            {
+                velocity *= -1;
             }
         }
     }
