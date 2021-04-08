@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Design_patterns
 {
-    public class Player : GameObject
+    public class Base : GameObject
     {
         public static Vector2 PlayerPosition = new Vector2(960, 520);
 
         public static int hp = 3;
 
-        public Player()
+        public Base()
         {
             position = PlayerPosition;
         }

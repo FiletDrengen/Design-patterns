@@ -42,7 +42,7 @@ namespace Design_patterns
 
             enemy.origin = new Vector2(enemy.sprite.Width / 2, enemy.sprite.Height / 2);
 
-            Vector2 Distance = Player.PlayerPosition - enemy.position;
+            Vector2 Distance = Base.PlayerPosition - enemy.position;
 
             enemy.rotation = (float)(Math.Atan2(Distance.Y, Distance.X) - Math.PI / 2);
             return enemy;

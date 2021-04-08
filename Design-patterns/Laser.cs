@@ -26,7 +26,7 @@ namespace Design_patterns
 
         public Laser(GameObject enemy)
         {
-            velocity = Player.PlayerPosition - enemy.position;
+            velocity = Base.PlayerPosition - enemy.position;
             velocity.Normalize();
             this.enemy = enemy;
             position = new Vector2(0, 0);
@@ -39,10 +39,10 @@ namespace Design_patterns
 
         public override void OnCollision(GameObject other)
         {
-            if (other is Player)
+            if (other is Base)
             {
-                velocity *= -1;
-                Player.hp--;
+                
+                Base.hp--;
             }
         }
     }

@@ -25,7 +25,7 @@ namespace Design_patterns
 
         public GameObject CreatePlayer()
         {
-            Player player = new Player();
+            Base player = new Base();
             player.SetSprite("PlayerTower");
             return player;
         }

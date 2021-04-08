@@ -17,7 +17,6 @@ namespace Design_patterns
         private Texture2D Platform;
         private SpriteFont font;
 
-        public Vector2 spritePosition;
         private float rotation;
         private Texture2D Background;
         private Texture2D collisionTexture;
@@ -51,7 +50,7 @@ namespace Design_patterns
             // TODO: Add your initialization logic here
             gameobject.Add(EnemyFactory.Instance.Create("Blue"));
             gameobject.Add(PlayerTower.Instance.CreatePlayer());
-            gameobject.Add(PlatformPlayer.Instance.CreatePlatformPlayer());
+            gameobject.Add(PlatformBase.Instance.CreatePlatformPlayer());
             base.Initialize();
         }
 
@@ -60,10 +59,8 @@ namespace Design_patterns
             collisionTexture = Content.Load<Texture2D>("Pixel");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Background = Content.Load<Texture2D>("Background");
-            sprite = Content.Load<Texture2D>("shield1");
             Platform = Content.Load<Texture2D>("platform");
             font = Content.Load<SpriteFont>("font");
-            spritePosition = new Vector2(960, 520);
         }
 
         public void DrawCollisionBox(GameObject go)
@@ -124,12 +121,11 @@ namespace Design_patterns
             {
                 go.Draw(spriteBatch);
             }
-            spriteBatch.Draw(sprite, spritePosition, null, Color.White, rotation, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(Platform, new Rectangle(650, 350, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
             spriteBatch.Draw(Platform, new Rectangle(1250, 350, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
             spriteBatch.Draw(Platform, new Rectangle(650, 750, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
             spriteBatch.Draw(Platform, new Rectangle(1250, 750, 80, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
-            spriteBatch.DrawString(font, $"Player Health = {Player.hp}", new Vector2(1750, 20), Color.Black);
+            spriteBatch.DrawString(font, $"Player Health = {Base.hp}", new Vector2(1750, 20), Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.End();

@@ -5,24 +5,24 @@ using System.Text;
 
 namespace Design_patterns
 {
-    public class PlatformPlayer : GameObject
+    public class PlatformBase : GameObject
     {
-        public Vector2 PlayerPlatformPosition = new Vector2(890, 570);
+        public Vector2 BasePlatformPosition = new Vector2(890, 570);
 
-        public PlatformPlayer()
+        public PlatformBase()
         {
-            position = PlayerPlatformPosition;
+            position = BasePlatformPosition;
         }
 
-        private static PlatformPlayer instance;
+        private static PlatformBase instance;
 
-        public static PlatformPlayer Instance
+        public static PlatformBase Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new PlatformPlayer();
+                    instance = new PlatformBase();
                 }
                 return instance;
             }
@@ -30,7 +30,7 @@ namespace Design_patterns
 
         public GameObject CreatePlatformPlayer()
         {
-            PlatformPlayer platformPlayer = new PlatformPlayer();
+            PlatformBase platformPlayer = new PlatformBase();
             platformPlayer.SetSprite("platform");
             return platformPlayer;
         }
