@@ -91,15 +91,15 @@ namespace Design_patterns
 
             // TODO: Add your update logic here
 
-            KeyboardState keystate = Keyboard.GetState();
-            if (keystate.IsKeyDown(Keys.Left))
-            {
-                rotation -= 0.1f;
-            }
-            else if (keystate.IsKeyDown(Keys.Right))
-            {
-                rotation += 0.1f;
-            }
+           // KeyboardState keystate = Keyboard.GetState();
+           // if (keystate.IsKeyDown(Keys.Left))
+           // {
+           //     rotation -= 0.1f;
+           // }
+           // else if (keystate.IsKeyDown(Keys.Right))
+           // {
+           //     rotation += 0.1f;
+           // }
 
             foreach (GameObject gameob in gameobject)
             {
@@ -111,6 +111,8 @@ namespace Design_patterns
             }
 
             DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            inputHandler.Execute(Shield.Instance);
             base.Update(gameTime);
         }
 

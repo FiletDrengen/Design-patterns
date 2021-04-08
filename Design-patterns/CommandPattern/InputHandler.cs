@@ -7,25 +7,25 @@ namespace Design_patterns.CommandPattern
 {
     public class InputHandler
 {
-     // private Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
-     //
-     // public InputHandler()
-     // {
-     //     keybinds.Add(Keys.Left, new MoveCommand(new float ()));
-     //     keybinds.Add(Keys.Right, new MoveCommand(new float ()));
-     // }
-     //
-     // public void Execute(Shield shield)
-     // {
-     //     KeyboardState keyState = Keyboard.GetState();
-     //
-     //     foreach (Keys key in keybinds.Keys)
-     //     {
-     //         if (keyState.IsKeyDown(key))
-     //         {
-     //             keybinds[key].Execute(shield);
-     //         }
-     //     }
-     // }
+     private Dictionary<Keys, ICommand> keybinds = new Dictionary<Keys, ICommand>();
+    
+     public InputHandler()
+     {
+         keybinds.Add(Keys.Left, new MoveCommand(-1));
+         keybinds.Add(Keys.Right, new MoveCommand(1));
+     }
+    
+     public void Execute(Shield shield)
+     {
+         KeyboardState keyState = Keyboard.GetState();
+    
+         foreach (Keys key in keybinds.Keys)
+         {
+             if (keyState.IsKeyDown(key))
+             {
+                 keybinds[key].Execute(shield);
+             }
+         }
+     }
 }
 }

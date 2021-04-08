@@ -16,7 +16,7 @@ namespace Design_patterns
         protected Vector2 scale;
         protected int offsetX;
         protected int offsetY;
-        public float rotation;
+        protected float rotation;
 
         public GameObject()
         {

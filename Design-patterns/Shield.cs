@@ -15,14 +15,15 @@ namespace Design_patterns
         private float speed;
 
 
-        public Shield()
+        private Shield()
         {
             position = shieldPosition;
+            this.speed = 0.1f;
         }
 
         public void Rotate(float rotation)
         {
-            rotation *= speed;
+            this.rotation += rotation * speed;
 
         }
 
@@ -42,15 +43,7 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
-            KeyboardState keystate = Keyboard.GetState();
-            if (keystate.IsKeyDown(Keys.Left))
-            {
-                rotation -= 0.1f;
-            }
-            else if (keystate.IsKeyDown(Keys.Right))
-            {
-                rotation += 0.1f;
-            }
+           
         }
 
         public override void OnCollision(GameObject other)
@@ -60,7 +53,7 @@ namespace Design_patterns
 
         public GameObject CreateShield()
         {
-            Shield shield = new Shield();
+            Shield shield = Shield.Instance;
             shield.SetSprite("shield1");
             return shield;
         }
