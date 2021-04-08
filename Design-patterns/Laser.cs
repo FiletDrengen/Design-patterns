@@ -9,7 +9,7 @@ namespace Design_patterns
     public class Laser : GameObject
     {
         private Vector2 velocity;
-        private int speed = 100;
+        private int speed = 250;
         private GameObject enemy;
 
         public Vector2 Position

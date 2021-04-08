@@ -22,8 +22,10 @@ namespace Design_patterns
 
         public Texture2D bulletTexture;
         public Vector2 EnemyPosition;
-        private int Cooldown = 5;
-        private float Time;
+        private int attackCooldown = 5;
+        private int imuneCooldown = 1;
+        private float imuneTime = 0;
+        private float attackTime = 0;
 
         public Vector2 Position
         {
@@ -40,11 +42,13 @@ namespace Design_patterns
 
         public void ATTACK()
         {
+            imuneTime = 0;
             Laser laser = new Laser(this);
             laser.Position = position + new Vector2(this.sprite.Width/2, this.sprite.Height/2);
             laser.SetSprite("Laser");
             bullets.Add(laser);
-            
+            attackTime = 0;
+
         }
 
         private readonly Random random = new Random();
@@ -56,11 +60,11 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
-            Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (Cooldown < Time)
+            imuneTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            attackTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (attackCooldown < attackTime)
             {
                 ATTACK();
-                Time = 1;
             }
             foreach (Laser L in deadlaser)
             {
@@ -136,9 +140,10 @@ namespace Design_patterns
         {
             if (other is Laser)
             {
-                if (Cooldown < Time)
+                if (imuneCooldown < imuneTime)
                 {
                     hp -= 1;
+                    imuneTime = 0;
                 }
                 
             }
