@@ -13,7 +13,7 @@ namespace Design_patterns
 
         public SpriteBatch spriteBatch;
         private Texture2D sprite;
-        public List<GameObject> gameobject = new List<GameObject>();
+        public List<GameObject> gameobjects = new List<GameObject>();
         
         private Texture2D Platform;
         private SpriteFont font;
@@ -56,10 +56,10 @@ namespace Design_patterns
         {
             // TODO: Add your initialization logic here
             inputHandler = new InputHandler();
-            gameobject.Add(EnemyFactory.Instance.Create("Blue"));
-            gameobject.Add(BaseTower.Instance.CreatePlayer());
-            gameobject.Add(PlatformBase.Instance.CreatePlatformPlayer());
-            gameobject.Add(Shield.Instance.CreateShield());
+            gameobjects.Add(EnemyFactory.Instance.Create("Blue"));
+            gameobjects.Add(BaseTower.Instance.CreatePlayer());
+            gameobjects.Add(PlatformBase.Instance.CreatePlatformPlayer());
+            gameobjects.Add(Shield.Instance.CreateShield());
             base.Initialize();
         }
 
