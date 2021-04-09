@@ -22,8 +22,8 @@ namespace Design_patterns
 
         public Texture2D bulletTexture;
         public Vector2 EnemyPosition;
-        private int attackCooldown = 5;
-        private int imuneCooldown = 1;
+        private int attackCooldown = 4;
+        private float imuneCooldown = 0.5f;
         private float imuneTime = 0;
         private float attackTime = 0;
 
