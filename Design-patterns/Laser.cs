@@ -9,9 +9,9 @@ namespace Design_patterns
     public class Laser : GameObject
     {
         private Vector2 velocity;
-        private int speed = 350;
+        private int speed = 650;
         private GameObject enemy;
-        private bool hasBounced;
+        public static bool hasBounced;
         public Vector2 Position
         {
             get
@@ -56,6 +56,10 @@ namespace Design_patterns
                     velocity *= -1;
                     hasBounced = true;
                 }
+            }
+            if (other is Enemy && hasBounced == true)
+            {
+                Enemy.deadlaser.Add(this);
             }
         }
     }

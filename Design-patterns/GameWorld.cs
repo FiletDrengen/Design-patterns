@@ -12,7 +12,6 @@ namespace Design_patterns
         public GraphicsDeviceManager graphics;
 
         public SpriteBatch spriteBatch;
-        private Texture2D sprite;
         public List<GameObject> gameobjects = new List<GameObject>();
         
         private Texture2D Platform;
@@ -23,6 +22,8 @@ namespace Design_patterns
         private Texture2D collisionTexture;
 
         private InputHandler inputHandler;
+
+        public static int score = 0;
 
         public static float DeltaTime { get; set; }
 
@@ -130,6 +131,8 @@ namespace Design_patterns
             spriteBatch.Draw(Platform, new Rectangle(185, 885, 120, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
             spriteBatch.Draw(Platform, new Rectangle(1770, 885, 120, 30), null, Color.White, 0, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
             spriteBatch.DrawString(font, $"Player Health = {Base.hp}", new Vector2(1750, 20), Color.Black);
+            spriteBatch.DrawString(font, $"Current score = {GameWorld.score}", new Vector2(1600, 20), Color.Black);
+
 
             // TODO: Add your drawing code here
             spriteBatch.End();

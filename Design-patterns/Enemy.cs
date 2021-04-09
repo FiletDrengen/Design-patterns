@@ -22,9 +22,7 @@ namespace Design_patterns
 
         public Texture2D bulletTexture;
         public Vector2 EnemyPosition;
-        private int attackCooldown = 4;
-        private float imuneCooldown = 0.4f;
-        private float imuneTime = 0;
+        private int attackCooldown = 2;
         private float attackTime = 0;
 
         public Vector2 Position
@@ -39,10 +37,14 @@ namespace Design_patterns
         {
             position = CurrentPosition;
         }
-
+        /// <summary>
+        /// creates a new laser
+        /// makes the laser spawn in the center of the enemy sprite
+        /// adds the laser to the (bullets) list 
+        /// resets the attack timer
+        /// </summary>
         public void ATTACK()
         {
-            imuneTime = 0;
             Laser laser = new Laser(this);
             laser.Position = position + new Vector2(this.sprite.Width/2, this.sprite.Height/2);
             laser.SetSprite("Laser");
@@ -55,13 +57,11 @@ namespace Design_patterns
 
         public int RandomNumber(int min, int max)
         {
-           
             return random.Next(min, max);
         }
 
         public override void Update(GameTime gameTime)
         {
-            imuneTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             attackTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (attackCooldown < attackTime)
             {
@@ -133,14 +133,10 @@ namespace Design_patterns
 
         public override void OnCollision(GameObject other)
         {
-            if (other is Laser)
+            if (other is Laser && Laser.hasBounced == true)
             {
-                if (imuneCooldown < imuneTime)
-                {
-                    hp -= 1;
-                    imuneTime = 0;
-                }
-                
+                   hp -= 1;
+                GameWorld.score++;
             }
         }
     }

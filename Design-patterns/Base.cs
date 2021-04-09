@@ -15,7 +15,10 @@ namespace Design_patterns
         {
             position = PlayerPosition;
         }
-
+        /// <summary>
+        /// ensures that hp cannot go lower than 0
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             if (hp <= 0)
