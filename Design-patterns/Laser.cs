@@ -11,7 +11,7 @@ namespace Design_patterns
         private Vector2 velocity;
         private int speed = 250;
         private GameObject enemy;
-
+        private bool hasBounced;
         public Vector2 Position
         {
             get
@@ -24,12 +24,15 @@ namespace Design_patterns
             }
         }
 
+        
+
         public Laser(GameObject enemy)
         {
             velocity = Base.PlayerPosition - enemy.position;
             velocity.Normalize();
             this.enemy = enemy;
             position = new Vector2(0, 0);
+            hasBounced = false;
         }
 
         public override void Update(GameTime gameTime)
@@ -43,10 +46,16 @@ namespace Design_patterns
             {
                 Base.hp--;
                 Enemy.deadlaser.Add(this);
+               
             }
             else if (other is Shield)
             {
-                velocity *= -1;
+               
+                if(!hasBounced)
+                {
+                    velocity *= -1;
+                    hasBounced = true;
+                }
             }
         }
     }

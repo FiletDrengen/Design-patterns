@@ -55,6 +55,7 @@ namespace Design_patterns
 
         public int RandomNumber(int min, int max)
         {
+           
             return random.Next(min, max);
         }
 
@@ -102,36 +103,30 @@ namespace Design_patterns
                 {
                     case 0:
                         position = VenstreNedersteHjørne;
-                        hp += 1;
                         break;
 
                     case 1:
                         position = HøjreØversteHjørne;
-                        hp += 1;
                         break;
 
                     case 2:
                         position = VenstreØversteHjørne;
-                        hp += 1;
                         break;
 
                     case 3:
                         position = HøjreNedersteHjørne;
-                        hp += 1;
                         break;
 
                     case 4:
                         position = HøjreNedersteHjørne;
-                        hp += 1;
                         break;
 
                     default:
                         position = HøjreNedersteHjørne;
-                        hp += 1;
                         break;
                 }
                 Vector2 Distance = Base.PlayerPosition - position;
-
+                hp += 1;
                 rotation = (float)(Math.Atan2(Distance.Y, Distance.X) - Math.PI / 2);
             }
         }
