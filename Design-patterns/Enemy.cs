@@ -138,8 +138,8 @@ namespace Design_patterns
                         break;
                 }
                 Vector2 Distance = Base.PlayerPosition - position;
+                
                 hp += 1;
-                rotation = (float)(Math.Atan2(Distance.Y, Distance.X) - Math.PI / 2);
             }
         }
 
