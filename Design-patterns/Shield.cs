@@ -14,14 +14,14 @@ namespace Design_patterns
 
         private float speed;
 
-        private Vector2 position;
-
         private Vector2 origin;
+
+        private Vector2 velocity;
         
 
         private Shield(Vector2 startPos)
         {
-            position = shieldPosition;
+            
             this.speed = 100;
             this.position = startPos;
         }
@@ -38,10 +38,10 @@ namespace Design_patterns
             {
                 velocity.Normalize();
             }
+            this.velocity = velocity;
+            this.velocity *= speed;
 
-            velocity *= speed;
-
-            position += (velocity * GameWorld.DeltaTime);
+            position += (this.velocity * GameWorld.DeltaTime);
         }
 
         private static Shield instance;
@@ -60,6 +60,8 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
+
+            
 
             //position += shieldPosition * rotation * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
