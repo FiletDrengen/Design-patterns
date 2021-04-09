@@ -18,7 +18,7 @@ namespace Design_patterns
         private Shield()
         {
             position = shieldPosition;
-            this.speed = 0.1f;
+            this.speed = 0.05f;
         }
 
         public void Rotate(float rotation)
@@ -43,8 +43,7 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
-            position += shieldPosition * rotation * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+            //position += shieldPosition * rotation * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public override void OnCollision(GameObject other)
