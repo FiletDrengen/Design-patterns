@@ -13,12 +13,11 @@ namespace Design_patterns
         private GameObject go = new GameObject();
 
         private float speed;
-
-        private Vector2 origin;
         
 
         public Shield(Vector2 startPos)
         {
+            
             this.speed = 1000;
             this.position = startPos;
         }
@@ -61,8 +60,11 @@ namespace Design_patterns
         public GameObject CreateShield()
         {
             Shield shield = Shield.Instance;
-            shield.SetSprite("shield1");
+            position.X = 800;
+            position.Y = 400;
+            shield.SetSprite("shield3");
             return shield;
+            
         }
 
 
