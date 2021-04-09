@@ -118,7 +118,9 @@ namespace Design_patterns
             spriteBatch.Draw(Background, new Rectangle(0, 0, 1920, 1080), Color.White);
             foreach (GameObject go in gameobjects)
             {
-                DrawCollisionBox(go);
+#if DEBUG
+ DrawCollisionBox(go);
+#endif
                 go.Draw(spriteBatch);
             }
 
