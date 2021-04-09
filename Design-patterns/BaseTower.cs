@@ -31,7 +31,7 @@ namespace Design_patterns
         public GameObject CreatePlayer()
         {
             Base baseTower = new Base();
-            baseTower.SetSprite("PlayerTower");
+            baseTower.SetSprite("ufobase");
             return baseTower;
         }
     }
