@@ -13,18 +13,35 @@ namespace Design_patterns
         private GameObject go = new GameObject();
 
         private float speed;
+
+        private Vector2 position;
+
+        private Vector2 origin;
         
 
-        private Shield()
+        private Shield(Vector2 startPos)
         {
             position = shieldPosition;
-            this.speed = 0.05f;
+            this.speed = 100;
+            this.position = startPos;
         }
 
-        public void Rotate(float rotation)
-        {
-            this.rotation += rotation * speed;
+       //public void Rotate(float rotation)
+       //{
+       //    this.rotation += rotation * speed;
+       //
+       //}
 
+        public void Move(Vector2 velocity)
+        {
+            if (velocity != Vector2.Zero)
+            {
+                velocity.Normalize();
+            }
+
+            velocity *= speed;
+
+            position += (velocity * GameWorld.DeltaTime);
         }
 
         private static Shield instance;
@@ -35,7 +52,7 @@ namespace Design_patterns
             {
                 if (instance == null)
                 {
-                    instance = new Shield();
+                    instance = new Shield(new Vector2(900,500));
                 }
                 return instance;
             }
@@ -43,6 +60,7 @@ namespace Design_patterns
 
         public override void Update(GameTime gameTime)
         {
+
             //position += shieldPosition * rotation * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
@@ -55,10 +73,6 @@ namespace Design_patterns
         {
             Shield shield = Shield.Instance;
             shield.SetSprite("shield1");
-            shield.offsetX = 110;
-            shield.offsetY = 110;
-            shield.sizeX = -100;
-            shield.sizeY = -100;
             return shield;
         }
 
