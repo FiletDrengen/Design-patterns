@@ -35,11 +35,22 @@ namespace Design_patterns
             hasBounced = false;
         }
 
+        /// <summary>
+        /// updates the position of the laser to enable it to move
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             position += velocity * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
+        /// <summary>
+        /// checks if the laser is colliding with a Base, Shield, Enemy
+        /// if colliding with Base, adds the laser to (deadlaser list)
+        /// if colliding with shield, sets has bounced to true and reverses lasers velocity
+        /// if colliding with Enemy and hasBounced is true, adds the laser to (deadlaser list)
+        /// </summary>
+        /// <param name="other"></param>
         public override void OnCollision(GameObject other)
         {
             if (other is Base)

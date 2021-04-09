@@ -60,6 +60,13 @@ namespace Design_patterns
             return random.Next(min, max);
         }
 
+        /// <summary>
+        /// compares attacktime to cooldown, to give the enemy an interval in shooting
+        /// removes a bullet for every deadlaser in the list
+        /// updates the Move method
+        /// checks collision with laser on all gameobject instances
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             attackTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -95,6 +102,11 @@ namespace Design_patterns
             base.Draw(spriteBatch);
         }
 
+        /// <summary>
+        /// creates a switch case for each position of the enemies
+        /// gives the newly spawned enemy 1 hp
+        /// calculates and uses the difference in enemy position, and player position, to rotate the enemy sprite towards the player(shield)
+        /// </summary>
         public void Move()
         {
             if (hp != 1)
@@ -131,6 +143,10 @@ namespace Design_patterns
             }
         }
 
+        /// <summary>
+        /// checks if the laser has bounced off of the shield, before coliding with the enemy
+        /// </summary>
+        /// <param name="other"></param>
         public override void OnCollision(GameObject other)
         {
             if (other is Laser && Laser.hasBounced == true)

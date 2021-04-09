@@ -32,6 +32,9 @@ namespace Design_patterns
             sprite = GameWorld.Instance.Content.Load<Texture2D>(spriteName);
         }
 
+        /// <summary>
+        /// creates a rectangular collisionbox, and makes it possible to give an offset compared to the position / size of the sprite
+        /// </summary>
         public virtual Rectangle Collision
         {
             get
@@ -54,6 +57,12 @@ namespace Design_patterns
         {
         }
 
+        /// <summary>
+        /// this is the method we use to see if we trigger a collision
+        /// this method checks if 2 rectangles are intersecting(colides) with eachother
+        /// then it uses the OnCollision method in the other classes we want to trigger something in
+        /// </summary>
+        /// <param name="other"></param>
         public void CheckCollision(GameObject other)
         {
             if (Collision.Intersects(other.Collision) && this != other)

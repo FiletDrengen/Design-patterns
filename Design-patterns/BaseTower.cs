@@ -23,6 +23,11 @@ namespace Design_patterns
             }
         }
 
+        /// <summary>
+        /// creates a base
+        /// gives the base a sprite
+        /// </summary>
+        /// <returns></returns>
         public GameObject CreatePlayer()
         {
             Base baseTower = new Base();

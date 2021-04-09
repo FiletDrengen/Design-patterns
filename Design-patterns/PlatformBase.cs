@@ -28,6 +28,11 @@ namespace Design_patterns
             }
         }
 
+        /// <summary>
+        /// creates a platformbase
+        /// gives the platformbase a sprite
+        /// </summary>
+        /// <returns></returns>
         public GameObject CreatePlatformPlayer()
         {
             PlatformBase platformPlayer = new PlatformBase();

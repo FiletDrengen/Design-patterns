@@ -14,7 +14,7 @@ namespace Design_patterns
 
         private float speed;
         
-
+        
         public Shield(Vector2 startPos)
         {
             
@@ -22,6 +22,10 @@ namespace Design_patterns
             this.position = startPos;
         }
 
+        /// <summary>
+        /// updates position with velocity for every frame through (GameWorld.DeltaTime)
+        /// </summary>
+        /// <param name="velocity"></param>
         public void Move(Vector2 velocity)
         {
             if (velocity != Vector2.Zero)
@@ -57,6 +61,12 @@ namespace Design_patterns
             
         }
 
+        /// <summary>
+        /// creates a shield
+        /// gives the shield a sprite
+        /// gives the shield an X,Y position
+        /// </summary>
+        /// <returns></returns>
         public GameObject CreateShield()
         {
             Shield shield = Shield.Instance;
