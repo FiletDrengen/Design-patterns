@@ -90,6 +90,10 @@ namespace Design_patterns
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (Base.hp < 1)
+            {
+                Exit();
+            }
 
             foreach (GameObject gameob in gameobjects)
             {

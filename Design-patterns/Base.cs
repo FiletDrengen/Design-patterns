@@ -20,7 +20,7 @@ namespace Design_patterns
         {
             if (hp <= 0)
             {
-                //GameOver
+                hp = 0;
             }
         }
 
