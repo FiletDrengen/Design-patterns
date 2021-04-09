@@ -7,7 +7,7 @@ namespace Design_patterns
 {
     public class Base : GameObject
     {
-        public static Vector2 PlayerPosition = new Vector2(960, 520);
+        public static Vector2 PlayerPosition = new Vector2(920, 470);
 
         public static int hp = 3;
 
