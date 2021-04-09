@@ -64,7 +64,6 @@ namespace Design_patterns
             position.Y = 400;
             shield.SetSprite("shield3");
             return shield;
-            
         }
 
 
