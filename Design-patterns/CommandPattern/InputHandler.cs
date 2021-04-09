@@ -16,7 +16,7 @@ namespace Design_patterns.CommandPattern
          keybinds.Add(Keys.Right, new MoveCommand(new Vector2(1, 0)));
          keybinds.Add(Keys.Up, new MoveCommand(new Vector2(0, -1)));
          keybinds.Add(Keys.Down, new MoveCommand(new Vector2(0, 1)));
-        }
+     }
     
      public void Execute(Shield shield)
      {

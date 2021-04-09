@@ -90,19 +90,6 @@ namespace Design_patterns
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
-
-            // TODO: Add your update logic here
-
-           // KeyboardState keystate = Keyboard.GetState();
-           // if (keystate.IsKeyDown(Keys.Left))
-           // {
-           //     rotation -= 0.1f;
-           // }
-           // else if (keystate.IsKeyDown(Keys.Right))
-           // {
-           //     rotation += 0.1f;
-           // }
 
             foreach (GameObject gameob in gameobjects)
             {
