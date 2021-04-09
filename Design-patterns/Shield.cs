@@ -13,8 +13,6 @@ namespace Design_patterns
         private GameObject go = new GameObject();
 
         private float speed;
-
-        private Vector2 origin;
         
 
         public Shield(Vector2 startPos)
@@ -31,7 +29,7 @@ namespace Design_patterns
             }
             velocity *= speed;
 
-            position += (this.velocity * GameWorld.DeltaTime);
+            position += (velocity * GameWorld.DeltaTime);
         }
 
         private static Shield instance;
@@ -61,8 +59,9 @@ namespace Design_patterns
         public GameObject CreateShield()
         {
             Shield shield = Shield.Instance;
-            shield.SetSprite("shield1");
+            shield.SetSprite("shield3");
             return shield;
+
         }
 
 
